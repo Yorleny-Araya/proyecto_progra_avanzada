@@ -1,0 +1,88 @@
+CREATE DATABASE Control_Asistencia
+GO
+USE Control_Asistencia;
+GO
+
+CREATE TABLE Rol(
+idRol INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+rol VARCHAR(20) NOT NULL);
+GO
+
+CREATE TABLE Sede(
+idSede INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+sede VARCHAR(30) NOT NULL);
+GO
+
+CREATE TABLE TipoAusencia(
+idTipoAusencia INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+tipoAusencia VARCHAR(30) NOT NULL);
+GO
+
+CREATE TABLE TipoAsistencia(
+idTipoAsistencia INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+tipoAsistencia VARCHAR(30) NOT NULL);
+GO
+
+CREATE TABLE Empleado(
+idEmpleado INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+nombre VARCHAR(30) NOT NULL,
+primerApellido VARCHAR(30) NOT NULL,
+segundoApellido VARCHAR(30) NOT NULL,
+telefono VARCHAR(10) NOT NULL,
+correo VARCHAR(30) NOT NULL,
+cantVacaciones INT NOT NULL,
+huella VARBINARY(max) NULL,
+idSede INT NOT NULL,
+FOREIGN KEY (idSede) REFERENCES Sede(idSede));
+GO
+
+CREATE TABLE Autenticacion(
+idAutenticacion INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+usuario VARCHAR(20) NOT NULL,
+contrasena VARCHAR(20) NOT NULL,
+estado INT NOT NULL,
+idEmpleado INT NOT NULL,
+idRol INT NOT NULL,
+FOREIGN KEY (idEmpleado) REFERENCES Empleado(idEmpleado),
+FOREIGN KEY (idRol) REFERENCES Rol(idRol));
+GO
+
+CREATE TABLE Asistencia(
+idAsistencia INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+idEmpleado INT NOT NULL,
+fecha DATE NOT NULL,
+hora TIME NOT NULL,
+idTipoAsistencia INT NOT NULL, 
+FOREIGN KEY (idEmpleado) REFERENCES Empleado(idEmpleado),
+FOREIGN KEY (idTipoAsistencia) REFERENCES TipoAsistencia(idTipoAsistencia));
+GO
+
+CREATE TABLE Ausencia(
+idAusencia INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+idEmpleado INT NOT NULL,
+fechaInicio DATE NOT NULL,
+fechaFinal DATE NOT NULL,
+cantDias INT NOT NULL,
+motivo VARCHAR(100) NOT NULL,
+idTipoAusencia INT NOT NULL, 
+FOREIGN KEY (idEmpleado) REFERENCES Empleado(idEmpleado),
+FOREIGN KEY (idTipoAusencia) REFERENCES TipoAusencia(idTipoAusencia));
+GO
+
+CREATE TABLE BitacotaSesion(
+idBitacotaSesion INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+idEmpleado INT NOT NULL,
+fecha DATE NOT NULL,
+hora TIME NOT NULL,
+FOREIGN KEY (idEmpleado) REFERENCES Empleado(idEmpleado));
+GO
+
+CREATE TABLE BitacotaAccion(
+idBitacotaAccion INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+idEmpleado INT NOT NULL,
+fecha DATE NOT NULL,
+hora TIME NOT NULL,
+accion VARCHAR(30) NOT NULL,
+FOREIGN KEY (idEmpleado) REFERENCES Empleado(idEmpleado));
+GO
+

@@ -10,3 +10,11 @@ C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\obj\Debug\net
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\obj\Debug\netcoreapp3.1\BE.DAL.dll
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\obj\Debug\netcoreapp3.1\BE.DAL.pdb
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\obj\Debug\netcoreapp3.1\BE.DAL.genruntimeconfig.cache
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\bin\Debug\netcoreapp3.1\BE.DAL.DO.dll
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\bin\Debug\netcoreapp3.1\BE.DAL.EF.dll
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\bin\Debug\netcoreapp3.1\BE.DAL.Repository.dll
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\bin\Debug\netcoreapp3.1\BE.DAL.DO.pdb
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\bin\Debug\netcoreapp3.1\BE.DAL.Repository.pdb
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\bin\Debug\netcoreapp3.1\BE.DAL.EF.pdb
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\obj\Debug\netcoreapp3.1\BE.DAL.csproj.AssemblyReference.cache
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL\obj\Debug\netcoreapp3.1\BE.DAL.csproj.CopyComplete

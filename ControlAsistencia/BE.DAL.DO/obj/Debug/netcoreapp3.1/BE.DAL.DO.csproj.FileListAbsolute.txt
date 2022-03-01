@@ -11,3 +11,16 @@ C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.pdb
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.genruntimeconfig.cache
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.csproj.AssemblyReference.cache
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.deps.json
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.runtimeconfig.json
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.runtimeconfig.dev.json
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.dll
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.pdb
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.csproj.AssemblyReference.cache
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.AssemblyInfoInputs.cache
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.AssemblyInfo.cs
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.csproj.CoreCompileInputs.cache
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.dll
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.pdb
+C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.genruntimeconfig.cache

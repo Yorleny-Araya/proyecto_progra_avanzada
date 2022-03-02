@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\yovag\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\yovag\\.nuget\\packages"
+      "C:\\Users\\ellis\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ellis\\.nuget\\packages"
     ]
   }
 }

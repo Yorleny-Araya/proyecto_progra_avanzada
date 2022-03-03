@@ -1,29 +1,31 @@
-﻿using System;
+﻿using BE.DAL.DO.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using data = BE.DAL.DO.Objetos;
-using dal = BE.DAL;
-using BE.DAL.DO.Interfaces;
 using System.Threading.Tasks;
+using data = BE.DAL.DO.Objetos;
+using BE.DAL.Repository;
 using BE.DAL.EF;
 
-namespace BE.BS
+namespace BE.DAL
 {
     public class Asistencia : ICRUD<data.Asistencia>
     {
-        private dal.Asistencia _dal;
+
+        private Repository<data.Asistencia> repo;
         public Asistencia(NDbContext dbContext)
         {
-            _dal = new dal.Asistencia(dbContext);
+            repo = new Repository<data.Asistencia>(dbContext);
         }
         public void Delete(data.Asistencia t)
         {
-            _dal.Delete(t);
+            repo.Delete(t);
+            repo.Commit();
         }
 
         public IEnumerable<data.Asistencia> getAll()
         {
-            return _dal.getAll();
+            return repo.GetAll();
         }
 
         public Task<IEnumerable<data.Asistencia>> getAllAsync()
@@ -33,7 +35,7 @@ namespace BE.BS
 
         public data.Asistencia getOneById(int id)
         {
-            return _dal.getOneById(id);
+            return repo.GetOnebyID(id);
         }
 
         public Task<data.Asistencia> getOneByIdAsync(int id)
@@ -43,12 +45,14 @@ namespace BE.BS
 
         public void Insert(data.Asistencia t)
         {
-            _dal.Insert(t);
+            repo.Insert(t);
+            repo.Commit();
         }
 
         public void Update(data.Asistencia t)
         {
-            _dal.Update(t);
+            repo.Update(t);
+            repo.Commit();
         }
     }
 }

@@ -47,6 +47,10 @@ namespace BE.DAL.Repository
             return dbContext.Set<T>();
         }
 
+        public IEnumerable<T> GetAllBy(int id)
+        {
+            return (IEnumerable<T>)dbContext.Set<T>().Find(id);
+        }
         public T GetOne(Expression<Func<T, bool>> predicado)
         {
             return dbContext.Set<T>().Where(predicado).FirstOrDefault();

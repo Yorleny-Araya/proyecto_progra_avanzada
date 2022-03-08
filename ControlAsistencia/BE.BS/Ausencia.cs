@@ -27,6 +27,12 @@ namespace BE.BS
             return _dal.getAll();
         }
 
+        public IEnumerable<data.Ausencia> getAllBy(int id)
+        {
+            return _dal.getAllBy(id);
+        }
+
+
         public Task<IEnumerable<data.Ausencia>> getAllAsync()
         {
             throw new NotImplementedException();

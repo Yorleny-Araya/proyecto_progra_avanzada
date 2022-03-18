@@ -31,7 +31,10 @@ namespace BE.DAL
         {
             throw new NotImplementedException();
         }
-
+        public IEnumerable<data.BitacotaSesion> getAllBy(int id)
+        {
+            throw new NotImplementedException();
+        }
         public data.Autenticacion getOneById(int id)
         {
             return repo.GetOnebyID(id);
@@ -52,6 +55,11 @@ namespace BE.DAL
         {
             repo.Update(t);
             repo.Commit();
+        }
+
+        IEnumerable<data.Autenticacion> ICRUD<data.Autenticacion>.getAllBy(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -25,7 +25,10 @@ namespace BE.BS
         {
             return _dal.getAll();
         }
-
+        public IEnumerable<data.BitacotaSesion> getAllBy(int id)
+        {
+            throw new NotImplementedException();
+        }
         public Task<IEnumerable<data.Autenticacion>> getAllAsync()
         {
             throw new NotImplementedException();
@@ -49,6 +52,11 @@ namespace BE.BS
         public void Update(data.Autenticacion t)
         {
             _dal.Update(t);
+        }
+
+        IEnumerable<data.Autenticacion> ICRUD<data.Autenticacion>.getAllBy(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

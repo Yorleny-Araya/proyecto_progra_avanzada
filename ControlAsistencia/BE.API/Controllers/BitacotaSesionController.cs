@@ -120,7 +120,7 @@ namespace BE.API.Controllers
 
             return mapaAux;
         }
-
+        [ApiExplorerSettings(IgnoreApi = true)]
         private bool BitacotaSesionExists(int id)
         {
             return (new BE.BS.BitacotaSesion(_context).getOneById(id) != null);

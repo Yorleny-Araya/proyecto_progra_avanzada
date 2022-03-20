@@ -10,6 +10,7 @@ C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.dll
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.pdb
 C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.genruntimeconfig.cache
+C:\Users\Yorleny\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.csproj.AssemblyReference.cache
 C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.deps.json
 C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.runtimeconfig.json
 C:\Users\yovag\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.runtimeconfig.dev.json

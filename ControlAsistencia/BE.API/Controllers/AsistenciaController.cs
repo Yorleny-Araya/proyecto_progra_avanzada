@@ -110,7 +110,7 @@ namespace BE.API.Controllers
 
             return Asistencia;
         }
-        [ApiExplorerSettings(IgnoreApi = true)]
+
         private bool AsistenciaExists(int id)
         {
             return (new BE.BS.Asistencia(_context).getOneById(id) != null);

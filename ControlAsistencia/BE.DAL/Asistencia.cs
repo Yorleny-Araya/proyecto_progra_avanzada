@@ -33,11 +33,6 @@ namespace BE.DAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<data.Asistencia> getAllBy(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public data.Asistencia getOneById(int id)
         {
             return repo.GetOnebyID(id);

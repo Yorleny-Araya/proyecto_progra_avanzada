@@ -30,11 +30,6 @@ namespace BE.API
             options.UseSqlServer(
                 Configuration.GetConnectionString("GoodConnection")));
             services.AddSwaggerGen();
-            services.AddSwaggerGen(options =>
-            {
-
-                options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-            });
             services.AddControllers();
         }
 

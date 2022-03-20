@@ -110,7 +110,7 @@ namespace BE.API.Controllers
 
             return autenticacion;
         }
-        [ApiExplorerSettings(IgnoreApi = true)]
+
         private bool AutenticacionExists(int id)
         {
             return (new BE.BS.Autenticacion(_context).getOneById(id) != null);

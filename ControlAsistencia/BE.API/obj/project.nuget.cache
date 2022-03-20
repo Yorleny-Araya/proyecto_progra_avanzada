@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zaAAhQsEIVTW3BsxunHvt1fSB1NMfM7fkusYP5/d6xvvII3crT0/MM/03ghE2kPqbvOCWKI1AusPA7nhqHr8vg==",
+  "dgSpecHash": "XiGFw3nDoeqy5vOwSJW5g+73RXsoUryfEfdZ2NjjxRmMp5YeQTK3aW7LxfelLvdC/Q6v3E+eM1WjQjwR2Cl9QQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\BE.API.csproj",
+  "projectFilePath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\BE.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ellis\\.nuget\\packages\\automapper\\8.1.1\\automapper.8.1.1.nupkg.sha512",
     "C:\\Users\\ellis\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.1.1\\automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",

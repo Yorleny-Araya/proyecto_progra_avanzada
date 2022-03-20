@@ -8784,11 +8784,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\BE.API.csproj",
+      "projectUniqueName": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\BE.API.csproj",
       "projectName": "BE.API",
-      "projectPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\BE.API.csproj",
+      "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\BE.API.csproj",
       "packagesPath": "C:\\Users\\ellis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\obj\\",
+      "outputPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ellis\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8805,11 +8805,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.BS\\BE.BS.csproj": {
-              "projectPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.BS\\BE.BS.csproj"
+            "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.BS\\BE.BS.csproj": {
+              "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.BS\\BE.BS.csproj"
             },
-            "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj": {
-              "projectPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj"
+            "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj": {
+              "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj"
             }
           }
         }

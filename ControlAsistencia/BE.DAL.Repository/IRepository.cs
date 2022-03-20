@@ -10,7 +10,6 @@ namespace BE.DAL.Repository
     {
         IQueryable<T> AsQueryble();
         IEnumerable<T> GetAll();
-        IEnumerable<T> GetAll(int id);
 
         IEnumerable<T> Search(Expression<Func<T, bool>> predicado);
         T GetOne(Expression<Func<T, bool>> predicado);

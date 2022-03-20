@@ -26,13 +26,6 @@ namespace BE.API.Controllers
             return new BS.Ausencia(_context).getAll().ToList();
         }
 
-        // Obtener lista de ausencia por tipo de ausencias
-        // GET: api/Ausencia
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ausencia>>> GetAusenciabyAusenciaType(int idAusencia)
-        {
-            return new BS.Ausencia(_context).getAllBy(idAusencia).ToList();
-        }
 
 
         // GET: api/Ausencia/5
@@ -94,7 +87,7 @@ namespace BE.API.Controllers
                 BadRequest();
             }
             
-            return CreatedAtAction("GetAutenticacion", new { id = Ausencia.IdAusencia }, Ausencia);
+            return CreatedAtAction("GetAusencia", new { id = Ausencia.IdAusencia }, Ausencia);
         }
 
         // DELETE: api/Ausencia/5

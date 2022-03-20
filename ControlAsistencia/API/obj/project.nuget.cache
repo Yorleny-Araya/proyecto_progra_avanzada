@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AXVRs0B1lORvnK5s22we2tg+dh7y2oT7I5z4dI3q8SllQsaQKImJnVY0Z0RgYsCkK0wApnJfcJ56bdlHiYK5Dw==",
+  "dgSpecHash": "vBz30sGs8BL737E2A6p11wfsV/wBeBdr0jJM67/PnukhZ3PK8HICWMzHKM34WsYE71B6D0hbpnCRxth2zBrGXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistencia\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada\\ControlAsistencia\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ellis\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\ellis\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

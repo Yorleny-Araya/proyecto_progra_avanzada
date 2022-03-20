@@ -29,11 +29,6 @@ namespace BE.DAL
         }
 
 
-        public IEnumerable<data.Ausencia> getAllBy(int id)
-        {
-            return repo.GetAllBy(id);
-        }
-
         public Task<IEnumerable<data.Ausencia>> getAllAsync()
         {
             throw new NotImplementedException();

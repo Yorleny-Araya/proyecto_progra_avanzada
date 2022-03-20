@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\ControlAsistencia",
-    "\\ControlAsistencia\\BE.API",
-    "\\ControlAsistencia\\BE.API\\Controllers"
+    ""
   ],
-  "SelectedNode": "\\ControlAsistencia\\BE.API\\Controllers\\AutenticacionController.cs",
+  "SelectedNode": "\\ControlAsistencia.sln",
   "PreviewInSolutionExplorer": false
 }

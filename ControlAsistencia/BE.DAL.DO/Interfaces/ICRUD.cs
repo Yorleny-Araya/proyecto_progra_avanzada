@@ -10,7 +10,6 @@ namespace BE.DAL.DO.Interfaces
         void Insert(T t);
         void Update(T t);
         void Delete(T t);
-        IEnumerable<T> getAllBy(int id);
         IEnumerable<T> getAll();
         T getOneById(int id);
         Task<IEnumerable<T>> getAllAsync();

@@ -29,7 +29,6 @@ C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.runtimeconfig.dev.json
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.dll
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.pdb
-C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.csproj.AssemblyReference.cache
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.AssemblyInfoInputs.cache
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.AssemblyInfo.cs

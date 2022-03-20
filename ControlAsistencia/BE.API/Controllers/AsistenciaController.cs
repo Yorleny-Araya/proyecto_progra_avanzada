@@ -85,7 +85,7 @@ namespace BE.API.Controllers
                 BadRequest();
             }
 
-            return CreatedAtAction("GetAutenticacion", new { id = Asistencia.IdAsistencia }, Asistencia);
+            return CreatedAtAction("GetAsistencia", new { id = Asistencia.IdAsistencia }, Asistencia);
         }
 
         // DELETE: api/Asistencia/5

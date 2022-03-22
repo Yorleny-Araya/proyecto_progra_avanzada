@@ -23,14 +23,14 @@ namespace BE.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Autenticacion>>> GetAutenticacion()
         {
-            return new BE.BS.Autenticacion(_context).getAll().ToList();
+            return new BE.BS.Autenticacion(_context).GetAll().ToList();
         }
 
         // GET: api/Autenticacions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Autenticacion>> GetAutenticacion(int id)
         {
-            var autenticacion = new BE.BS.Autenticacion(_context).getOneById(id);
+            var autenticacion = new BE.BS.Autenticacion(_context).GetOneById(id);
 
             if (autenticacion == null)
             {
@@ -92,7 +92,7 @@ namespace BE.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Autenticacion>> DeleteAutenticacion(int id)
         {
-            var autenticacion = new BE.BS.Autenticacion(_context).getOneById(id);
+            var autenticacion = new BE.BS.Autenticacion(_context).GetOneById(id);
             if (autenticacion == null)
             {
                 return NotFound();
@@ -113,7 +113,7 @@ namespace BE.API.Controllers
 
         private bool AutenticacionExists(int id)
         {
-            return (new BE.BS.Autenticacion(_context).getOneById(id) != null);
+            return (new BE.BS.Autenticacion(_context).GetOneById(id) != null);
         }
     }
 }

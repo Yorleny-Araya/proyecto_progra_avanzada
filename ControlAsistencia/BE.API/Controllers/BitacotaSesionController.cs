@@ -22,15 +22,14 @@ namespace BE.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BitacotaSesion>>> GetBitacotaSesion()
         {
-            var res = await new BE.BS.BitacotaSesion(_context).getAllAsync();
-            return res.ToList();
+            return new BE.BS.BitacotaSesion(_context).GetAll().ToList();
         }
 
         // GET: api/BitacotaSesion/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BitacotaSesion>> GetBitacotaSesion(int id)
         {
-            var BitacotaSesion = await new BE.BS.BitacotaSesion(_context).getOneByIdAsync(id);
+            var BitacotaSesion = await new BE.BS.BitacotaSesion(_context).GetOneByIdAsync(id);
 
             if (BitacotaSesion == null)
             {
@@ -92,7 +91,7 @@ namespace BE.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<BitacotaSesion>> DeleteBitacotaSesion(int id)
         {
-            var BitacotaSesion = await new BE.BS.BitacotaSesion(_context).getOneByIdAsync(id);
+            var BitacotaSesion = await new BE.BS.BitacotaSesion(_context).GetOneByIdAsync(id);
             if (BitacotaSesion == null)
             {
                 return NotFound();
@@ -112,7 +111,7 @@ namespace BE.API.Controllers
 
         private bool BitacotaSesionExists(int id)
         {
-            return (new BE.BS.BitacotaSesion(_context).getOneById(id) != null);
+            return (new BE.BS.BitacotaSesion(_context).GetOneById(id) != null);
         }
     }
 }

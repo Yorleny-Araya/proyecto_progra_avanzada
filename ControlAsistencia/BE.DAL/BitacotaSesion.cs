@@ -22,23 +22,23 @@ namespace BE.DAL
             repo.Commit();
         }
 
-        public IEnumerable<data.BitacotaSesion> getAll()
+        public IEnumerable<data.BitacotaSesion> GetAll()
         {
             return repo.GetAll();
         }
 
-        public Task<IEnumerable<data.BitacotaSesion>> getAllAsync()
+        public Task<IEnumerable<data.BitacotaSesion>> GetAllAsync()
         {
             return repo.GetAllAsync();
         }
 
 
-        public data.BitacotaSesion getOneById(int id)
+        public data.BitacotaSesion GetOneById(int id)
         {
             return repo.GetOnebyID(id);
         }
 
-        public Task<data.BitacotaSesion> getOneByIdAsync(int id)
+        public Task<data.BitacotaSesion> GetOneByIdAsync(int id)
         {
             return repo.GetOneByIdAsync(id);
         }

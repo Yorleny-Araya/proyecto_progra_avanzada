@@ -23,22 +23,22 @@ namespace BE.DAL
             repo.Commit();
         }
 
-        public IEnumerable<data.Asistencia> getAll()
+        public IEnumerable<data.Asistencia> GetAll()
         {
             return repo.GetAll();
         }
 
-        public Task<IEnumerable<data.Asistencia>> getAllAsync()
+        public Task<IEnumerable<data.Asistencia>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public data.Asistencia getOneById(int id)
+        public data.Asistencia GetOneById(int id)
         {
             return repo.GetOnebyID(id);
         }
 
-        public Task<data.Asistencia> getOneByIdAsync(int id)
+        public Task<data.Asistencia> GetOneByIdAsync(int id)
         {
             throw new NotImplementedException();
         }

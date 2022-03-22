@@ -21,22 +21,22 @@ namespace BE.BS
             _dal.Delete(t);
         }
 
-        public IEnumerable<data.Autenticacion> getAll()
+        public IEnumerable<data.Autenticacion> GetAll()
         {
-            return _dal.getAll();
+            return _dal.GetAll();
         }
 
-        public Task<IEnumerable<data.Autenticacion>> getAllAsync()
+        public Task<IEnumerable<data.Autenticacion>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public data.Autenticacion getOneById(int id)
+        public data.Autenticacion GetOneById(int id)
         {
-            return _dal.getOneById(id);
+            return _dal.GetOneById(id);
         }
 
-        public Task<data.Autenticacion> getOneByIdAsync(int id)
+        public Task<data.Autenticacion> GetOneByIdAsync(int id)
         {
             throw new NotImplementedException();
         }

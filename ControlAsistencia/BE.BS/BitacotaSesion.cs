@@ -21,24 +21,24 @@ namespace BE.BS
             _dal.Delete(t);
         }
 
-        public IEnumerable<data.BitacotaSesion> getAll()
+        public IEnumerable<data.BitacotaSesion> GetAll()
         {
-            return _dal.getAll();
+            return _dal.GetAll();
         }
 
-        public Task<IEnumerable<data.BitacotaSesion>> getAllAsync()
+        public Task<IEnumerable<data.BitacotaSesion>> GetAllAsync()
         {
-            return _dal.getAllAsync();
+            return _dal.GetAllAsync();
         }
     
-        public data.BitacotaSesion getOneById(int id)
+        public data.BitacotaSesion GetOneById(int id)
         {
-            return _dal.getOneById(id);
+            return _dal.GetOneById(id);
         }
 
-        public Task<data.BitacotaSesion> getOneByIdAsync(int id)
+        public Task<data.BitacotaSesion> GetOneByIdAsync(int id)
         {
-            return _dal.getOneByIdAsync(id);
+            return _dal.GetOneByIdAsync(id);
         }
 
         public void Insert(data.BitacotaSesion t)

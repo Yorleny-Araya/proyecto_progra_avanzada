@@ -23,7 +23,7 @@ namespace BE.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ausencia>>> GetAusencia()
         {
-            return new BS.Ausencia(_context).getAll().ToList();
+            return new BS.Ausencia(_context).GetAll().ToList();
         }
 
 
@@ -32,7 +32,7 @@ namespace BE.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Ausencia>> GetAusencia(int id)
         {
-            var autenticacion = new BE.BS.Ausencia(_context).getOneById(id);
+            var autenticacion = new BE.BS.Ausencia(_context).GetOneById(id);
 
             if (autenticacion == null)
             {
@@ -94,7 +94,7 @@ namespace BE.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Ausencia>> DeleteAusencia(int id)
         {
-            var Ausencia = new BE.BS.Ausencia(_context).getOneById(id);
+            var Ausencia = new BE.BS.Ausencia(_context).GetOneById(id);
             if (Ausencia == null)
             {
                 return NotFound();
@@ -115,7 +115,7 @@ namespace BE.API.Controllers
 
         private bool AusenciaExists(int id)
         {
-            return (new BE.BS.Ausencia(_context).getOneById(id) != null);
+            return (new BE.BS.Ausencia(_context).GetOneById(id) != null);
         }
     }
 }

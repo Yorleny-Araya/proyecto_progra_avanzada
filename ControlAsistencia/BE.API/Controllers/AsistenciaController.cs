@@ -23,14 +23,14 @@ namespace BE.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Asistencia>>> GetAsistencia()
         {
-            return new BS.Asistencia(_context).getAll().ToList();
+            return new BS.Asistencia(_context).GetAll().ToList();
         }
 
         // GET: api/Asistencia/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Asistencia>> GetAsistencia(int id)
         {
-            var autenticacion = new BE.BS.Asistencia(_context).getOneById(id);
+            var autenticacion = new BE.BS.Asistencia(_context).GetOneById(id);
 
             if (autenticacion == null)
             {
@@ -92,7 +92,7 @@ namespace BE.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Asistencia>> DeleteAsistencia(int id)
         {
-            var Asistencia = new BE.BS.Asistencia(_context).getOneById(id);
+            var Asistencia = new BE.BS.Asistencia(_context).GetOneById(id);
             if (Asistencia == null)
             {
                 return NotFound();
@@ -113,7 +113,7 @@ namespace BE.API.Controllers
 
         private bool AsistenciaExists(int id)
         {
-            return (new BE.BS.Asistencia(_context).getOneById(id) != null);
+            return (new BE.BS.Asistencia(_context).GetOneById(id) != null);
         }
     }
 }

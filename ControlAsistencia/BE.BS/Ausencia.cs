@@ -22,23 +22,23 @@ namespace BE.BS
             _dal.Delete(t);
         }
 
-        public IEnumerable<data.Ausencia> getAll()
+        public IEnumerable<data.Ausencia> GetAll()
         {
-            return _dal.getAll();
+            return _dal.GetAll();
         }
 
 
-        public Task<IEnumerable<data.Ausencia>> getAllAsync()
+        public Task<IEnumerable<data.Ausencia>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public data.Ausencia getOneById(int id)
+        public data.Ausencia GetOneById(int id)
         {
-            return _dal.getOneById(id);
+            return _dal.GetOneById(id);
         }
 
-        public Task<data.Ausencia> getOneByIdAsync(int id)
+        public Task<data.Ausencia> GetOneByIdAsync(int id)
         {
             throw new NotImplementedException();
         }

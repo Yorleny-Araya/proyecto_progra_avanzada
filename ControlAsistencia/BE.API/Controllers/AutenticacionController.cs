@@ -1,11 +1,13 @@
-﻿using BE.DAL.DO.Objetos;
+﻿using AutoMapper;
+using BE.DAL.DO.Objetos;
 using BE.DAL.EF;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using data = BE.DAL.DO.Objetos;
+using models = BE.API.DataModels;
 
 namespace BE.API.Controllers
 {
@@ -14,46 +16,53 @@ namespace BE.API.Controllers
     public class AutenticacionController : Controller
     {
         private readonly NDbContext _context;
+        private readonly IMapper _mapper;
 
-        public AutenticacionController(NDbContext context)
+        public AutenticacionController(NDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         // GET: api/Autenticacion
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Autenticacion>>> GetAutenticacion()
+        public async Task<ActionResult<IEnumerable<models.Autenticacion>>> GetAutenticacion()
         {
-            return new BE.BS.Autenticacion(_context).GetAll().ToList();
+            var res = await new BE.BS.Autenticacion(_context).GetAllAsync();
+            List<models.Autenticacion> mapaAux = _mapper.Map<IEnumerable<data.Autenticacion>, IEnumerable<models.Autenticacion>>(res).ToList();
+            return mapaAux;
         }
 
-        // GET: api/Autenticacions/5
+        // GET: api/Autenticacion/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Autenticacion>> GetAutenticacion(int id)
+        public async Task<ActionResult<models.Autenticacion>> GetAutenticacion(int id)
         {
-            var autenticacion = new BE.BS.Autenticacion(_context).GetOneById(id);
+            var Autenticacion = await new BE.BS.Autenticacion(_context).GetOneByIdAsync(id);
 
-            if (autenticacion == null)
+            if (Autenticacion == null)
             {
                 return NotFound();
             }
+            models.Autenticacion mapaAux = _mapper.Map<data.Autenticacion, models.Autenticacion>(Autenticacion);
 
-            return autenticacion;
+            return mapaAux;
         }
 
-        // PUT: api/Autenticacions/5
+        // PUT: api/Autenticacion/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAutenticacion(int id, Autenticacion autenticacion)
+        public async Task<IActionResult> PutAutenticacion(int id, models.Autenticacion Autenticacion)
         {
-            if (id != autenticacion.IdAutenticacion)
+            if (id != Autenticacion.IdAutenticacion)
             {
                 return BadRequest();
             }
 
             try
             {
-                new BE.BS.Autenticacion(_context).Update(autenticacion);
+                data.Autenticacion mapaAux = _mapper.Map<models.Autenticacion, data.Autenticacion>(Autenticacion);
+
+                new BE.BS.Autenticacion(_context).Update(mapaAux);
             }
             catch (Exception ee)
             {
@@ -70,45 +79,46 @@ namespace BE.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Autenticacions
+        // POST: api/Autenticacion
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Autenticacion>> PostAutenticacion(Autenticacion autenticacion)
+        public async Task<ActionResult<models.Autenticacion>> PostAutenticacion(models.Autenticacion Autenticacion)
         {
             try
             {
-                new BE.BS.Autenticacion(_context).Insert(autenticacion);
+                data.Autenticacion mapaAux = _mapper.Map<models.Autenticacion, data.Autenticacion>(Autenticacion);
+                new BE.BS.Autenticacion(_context).Insert(mapaAux);
             }
-            catch (Exception)
+            catch (Exception ee)
             {
                 BadRequest();
             }
-            
-            return CreatedAtAction("GetAutenticacion", new { id = autenticacion.IdAutenticacion }, autenticacion);
+
+            return CreatedAtAction("GetAutenticacion", new { id = Autenticacion.IdAutenticacion }, Autenticacion);
         }
 
-        // DELETE: api/Autenticacions/5
+        // DELETE: api/Autenticacion/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Autenticacion>> DeleteAutenticacion(int id)
+        public async Task<ActionResult<models.Autenticacion>> DeleteAutenticacion(int id)
         {
-            var autenticacion = new BE.BS.Autenticacion(_context).GetOneById(id);
-            if (autenticacion == null)
+            var Autenticacion = await new BE.BS.Autenticacion(_context).GetOneByIdAsync(id);
+            if (Autenticacion == null)
             {
                 return NotFound();
             }
 
             try
             {
-                new BE.BS.Autenticacion(_context).Delete(autenticacion);
+                new BE.BS.Autenticacion(_context).Delete(Autenticacion);
             }
             catch (Exception)
             {
-
                 BadRequest();
             }
+            models.Autenticacion mapaAux = _mapper.Map<data.Autenticacion, models.Autenticacion>(Autenticacion);
 
-            return autenticacion;
+            return mapaAux;
         }
 
         private bool AutenticacionExists(int id)

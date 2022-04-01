@@ -1,20 +1,20 @@
-﻿using BE.DAL.DO.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using data = BE.DAL.DO.Objetos;
-using BE.DAL.Repository;
 using BE.DAL.EF;
+using BE.DAL.Repository;
+using BE.DAL.DO.Interfaces;
+using System.Threading.Tasks;
 
 namespace BE.DAL
 {
     public class Autenticacion : ICRUD<data.Autenticacion>
     {
-        private Repository<data.Autenticacion> repo;
+        private RepositoryAutenticacion repo;
         public Autenticacion(NDbContext dbContext)
         {
-            repo = new Repository<data.Autenticacion>(dbContext);
+            repo = new RepositoryAutenticacion(dbContext);
         }
         public void Delete(data.Autenticacion t)
         {
@@ -29,7 +29,7 @@ namespace BE.DAL
 
         public Task<IEnumerable<data.Autenticacion>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return repo.GetAllAsync();
         }
 
         public data.Autenticacion GetOneById(int id)
@@ -39,7 +39,7 @@ namespace BE.DAL
 
         public Task<data.Autenticacion> GetOneByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return repo.GetOneByIdAsync(id);
         }
 
         public void Insert(data.Autenticacion t)

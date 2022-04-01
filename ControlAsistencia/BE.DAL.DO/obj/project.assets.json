@@ -5674,19 +5674,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ellis\\.nuget\\packages\\": {}
+    "C:\\Users\\Yorleny\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada1\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj",
+      "projectUniqueName": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj",
       "projectName": "BE.DAL.DO",
-      "projectPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada1\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj",
-      "packagesPath": "C:\\Users\\ellis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada1\\ControlAsistencia\\BE.DAL.DO\\obj\\",
+      "projectPath": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj",
+      "packagesPath": "C:\\Users\\Yorleny\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.DO\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ellis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Yorleny\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5748,7 +5752,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

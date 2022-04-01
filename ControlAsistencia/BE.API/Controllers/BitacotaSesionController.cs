@@ -1,10 +1,13 @@
-﻿using BE.DAL.DO.Objetos;
+﻿using AutoMapper;
+using BE.DAL.DO.Objetos;
 using BE.DAL.EF;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using data = BE.DAL.DO.Objetos;
+using models = BE.API.DataModels;
 
 namespace BE.API.Controllers
 {
@@ -13,21 +16,25 @@ namespace BE.API.Controllers
     public class BitacotaSesionController : Controller
     {
         private readonly NDbContext _context;
+        private readonly IMapper _mapper;
 
-        public BitacotaSesionController(NDbContext context)
+        public BitacotaSesionController(NDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         // GET: api/BitacotaSesion
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BitacotaSesion>>> GetBitacotaSesion()
+        public async Task<ActionResult<IEnumerable<models.BitacotaSesion>>> GetBitacotaSesion()
         {
-            return new BE.BS.BitacotaSesion(_context).GetAll().ToList();
+            var res = await new BE.BS.BitacotaSesion(_context).GetAllAsync();
+            List<models.BitacotaSesion> mapaAux = _mapper.Map<IEnumerable<data.BitacotaSesion>, IEnumerable<models.BitacotaSesion>>(res).ToList();
+            return mapaAux;
         }
 
         // GET: api/BitacotaSesion/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BitacotaSesion>> GetBitacotaSesion(int id)
+        public async Task<ActionResult<models.BitacotaSesion>> GetBitacotaSesion(int id)
         {
             var BitacotaSesion = await new BE.BS.BitacotaSesion(_context).GetOneByIdAsync(id);
 
@@ -35,15 +42,16 @@ namespace BE.API.Controllers
             {
                 return NotFound();
             }
+            models.BitacotaSesion mapaAux = _mapper.Map<data.BitacotaSesion, models.BitacotaSesion>(BitacotaSesion);
 
-            return BitacotaSesion;
+            return mapaAux;
         }
 
         // PUT: api/BitacotaSesion/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBitacotaSesion(int id, BitacotaSesion BitacotaSesion)
+        public async Task<IActionResult> PutBitacotaSesion(int id, models.BitacotaSesion BitacotaSesion)
         {
             if (id != BitacotaSesion.IdBitacotaSesion)
             {
@@ -52,7 +60,9 @@ namespace BE.API.Controllers
 
             try
             {
-                new BE.BS.BitacotaSesion(_context).Update(BitacotaSesion);
+                data.BitacotaSesion mapaAux = _mapper.Map<models.BitacotaSesion, data.BitacotaSesion>(BitacotaSesion);
+
+                new BE.BS.BitacotaSesion(_context).Update(mapaAux);
             }
             catch (Exception ee)
             {
@@ -73,11 +83,12 @@ namespace BE.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<BitacotaSesion>> PostBitacotaSesion(BitacotaSesion BitacotaSesion)
+        public async Task<ActionResult<models.BitacotaSesion>> PostBitacotaSesion(models.BitacotaSesion BitacotaSesion)
         {
             try
             {
-                new BE.BS.BitacotaSesion(_context).Insert(BitacotaSesion);
+                data.BitacotaSesion mapaAux = _mapper.Map<models.BitacotaSesion, data.BitacotaSesion>(BitacotaSesion);
+                new BE.BS.BitacotaSesion(_context).Insert(mapaAux);
             }
             catch (Exception ee)
             {
@@ -89,7 +100,7 @@ namespace BE.API.Controllers
 
         // DELETE: api/BitacotaSesion/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<BitacotaSesion>> DeleteBitacotaSesion(int id)
+        public async Task<ActionResult<models.BitacotaSesion>> DeleteBitacotaSesion(int id)
         {
             var BitacotaSesion = await new BE.BS.BitacotaSesion(_context).GetOneByIdAsync(id);
             if (BitacotaSesion == null)
@@ -105,8 +116,9 @@ namespace BE.API.Controllers
             {
                 BadRequest();
             }
+            models.BitacotaSesion mapaAux = _mapper.Map<data.BitacotaSesion, models.BitacotaSesion>(BitacotaSesion);
 
-            return BitacotaSesion;
+            return mapaAux;
         }
 
         private bool BitacotaSesionExists(int id)

@@ -1,4 +1,5 @@
-﻿using BE.DAL.DO.Objetos;
+﻿using AutoMapper;
+using BE.DAL.DO.Objetos;
 using BE.DAL.EF;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using data = BE.DAL.DO.Objetos;
+using models = BE.API.DataModels;
+
 namespace BE.API.Controllers
 {
     [Route("api/[controller]")]
@@ -14,39 +18,45 @@ namespace BE.API.Controllers
     public class AusenciaController : Controller
     {
         private readonly NDbContext _context;
+        private readonly IMapper _mapper;
 
-        public AusenciaController(NDbContext context)
+        public AusenciaController(NDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         // GET: api/Ausencia
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ausencia>>> GetAusencia()
+        public async Task<ActionResult<IEnumerable<models.Ausencia>>> GetAusencia()
         {
-            return new BS.Ausencia(_context).GetAll().ToList();
+
+            var res = await new BE.BS.Ausencia(_context).GetAllAsync();
+            List<models.Ausencia> mapaAux = _mapper.Map<IEnumerable<data.Ausencia>, IEnumerable<models.Ausencia>>(res).ToList();
+            return mapaAux;
         }
 
 
 
         // GET: api/Ausencia/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Ausencia>> GetAusencia(int id)
+        public async Task<ActionResult<models.Ausencia>> GetAusencia(int id)
         {
-            var autenticacion = new BE.BS.Ausencia(_context).GetOneById(id);
+            var Ausencia = await new BE.BS.Ausencia(_context).GetOneByIdAsync(id);
 
-            if (autenticacion == null)
+            if (Ausencia == null)
             {
                 return NotFound();
             }
+            models.Ausencia mapaAux = _mapper.Map<data.Ausencia, models.Ausencia>(Ausencia);
 
-            return autenticacion;
+            return mapaAux;
         }
 
         // PUT: api/Ausencia/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAusencia(int id, Ausencia Ausencia)
+        public async Task<IActionResult> PutAusencia(int id, models.Ausencia Ausencia)
         {
             if (id != Ausencia.IdAusencia)
             {
@@ -55,7 +65,9 @@ namespace BE.API.Controllers
 
             try
             {
-                new BE.BS.Ausencia(_context).Update(Ausencia);
+                data.Ausencia mapaAux = _mapper.Map<models.Ausencia, data.Ausencia>(Ausencia);
+
+                new BE.BS.Ausencia(_context).Update(mapaAux);
             }
             catch (Exception ee)
             {
@@ -76,25 +88,26 @@ namespace BE.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Ausencia>> PostAusencia(Ausencia Ausencia)
+        public async Task<ActionResult<models.Ausencia>> PostAusencia(models.Ausencia Ausencia)
         {
             try
             {
-                new BE.BS.Ausencia(_context).Insert(Ausencia);
+                data.Ausencia mapaAux = _mapper.Map<models.Ausencia, data.Ausencia>(Ausencia);
+                new BE.BS.Ausencia(_context).Insert(mapaAux);
             }
-            catch (Exception)
+            catch (Exception ee)
             {
                 BadRequest();
             }
-            
+
             return CreatedAtAction("GetAusencia", new { id = Ausencia.IdAusencia }, Ausencia);
         }
 
         // DELETE: api/Ausencia/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Ausencia>> DeleteAusencia(int id)
+        public async Task<ActionResult<models.Ausencia>> DeleteAusencia(int id)
         {
-            var Ausencia = new BE.BS.Ausencia(_context).GetOneById(id);
+            var Ausencia = await new BE.BS.Ausencia(_context).GetOneByIdAsync(id);
             if (Ausencia == null)
             {
                 return NotFound();
@@ -106,11 +119,11 @@ namespace BE.API.Controllers
             }
             catch (Exception)
             {
-
                 BadRequest();
             }
+            models.Ausencia mapaAux = _mapper.Map<data.Ausencia, models.Ausencia>(Ausencia);
 
-            return Ausencia;
+            return mapaAux;
         }
 
         private bool AusenciaExists(int id)

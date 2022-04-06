@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using data = BE.DAL.DO.Objetos;
+using models = BE.API.DataModels;
+
 namespace BE.API.Controllers
 {
     [Route("api/[controller]")]
@@ -15,39 +18,44 @@ namespace BE.API.Controllers
     {
 
         private readonly NDbContext _context;
+        private readonly IMapper _mapper;
 
-        public BitacotaAccionController(NDbContext context)
+        public BitacotaAccionController(NDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         // GET: api/BitacotaAccion
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BitacotaAccion>>> GetBitacotaAccion()
+        public async Task<ActionResult<IEnumerable<models.BitacotaAccion>>> GetBitacotaAccion()
         {
-            return new BE.BS.BitacotaAccion(_context).GetAll().ToList();
+            var res = await new BE.BS.BitacotaAccion(_context).GetAllAsync();
+            List<models.BitacotaAccion> mapaAux = _mapper.Map<IEnumerable<data.BitacotaAccion>, IEnumerable<models.BitacotaAccion>>(res).ToList();
+            return mapaAux;
         }
 
 
 
         // GET: api/BitacotaAccion/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BitacotaAccion>> GetBitacotaAccion(int id)
+        public async Task<ActionResult<models.BitacotaAccion>> GetBitacotaAccion(int id)
         {
-            var bitacotaAccion = new BE.BS.BitacotaAccion(_context).GetOneById(id);
+            var BitacotaAccion = await new BE.BS.BitacotaAccion(_context).GetOneByIdAsync(id);
 
-            if (bitacotaAccion == null)
+            if (BitacotaAccion == null)
             {
                 return NotFound();
             }
+            models.BitacotaAccion mapaAux = _mapper.Map<data.BitacotaAccion, models.BitacotaAccion>(BitacotaAccion);
 
-            return bitacotaAccion;
+            return mapaAux;
         }
 
         // PUT: api/BitacotaAccion/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBitacotaAccion(int id, BitacotaAccion BitacotaAccion)
+        public async Task<IActionResult> PutBitacotaAccion(int id, models.BitacotaAccion BitacotaAccion)
         {
             if (id != BitacotaAccion.IdBitacotaAccion)
             {
@@ -56,7 +64,9 @@ namespace BE.API.Controllers
 
             try
             {
-                new BE.BS.BitacotaAccion(_context).Update(BitacotaAccion);
+                data.BitacotaAccion mapaAux = _mapper.Map<models.BitacotaAccion, data.BitacotaAccion>(BitacotaAccion);
+
+                new BE.BS.BitacotaAccion(_context).Update(mapaAux);
             }
             catch (Exception ee)
             {
@@ -77,13 +87,14 @@ namespace BE.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<BitacotaAccion>> PostBitacotaAccion(BitacotaAccion BitacotaAccion)
+        public async Task<ActionResult<models.BitacotaAccion>> PostBitacotaAccion(models.BitacotaAccion BitacotaAccion)
         {
             try
             {
-                new BE.BS.BitacotaAccion(_context).Insert(BitacotaAccion);
+                data.BitacotaAccion mapaAux = _mapper.Map<models.BitacotaAccion, data.BitacotaAccion>(BitacotaAccion);
+                new BE.BS.BitacotaAccion(_context).Insert(mapaAux);
             }
-            catch (Exception)
+            catch (Exception ee)
             {
                 BadRequest();
             }
@@ -93,9 +104,10 @@ namespace BE.API.Controllers
 
         // DELETE: api/BitacotaAccion/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<BitacotaAccion>> DeleteBitacotaAccion(int id)
+        public async Task<ActionResult<models.BitacotaAccion>> DeleteBitacotaAccion(int id)
         {
-            var BitacotaAccion = new BE.BS.BitacotaAccion(_context).GetOneById(id);
+
+            var BitacotaAccion = await new BE.BS.BitacotaAccion(_context).GetOneByIdAsync(id);
             if (BitacotaAccion == null)
             {
                 return NotFound();
@@ -107,11 +119,11 @@ namespace BE.API.Controllers
             }
             catch (Exception)
             {
-
                 BadRequest();
             }
+            models.BitacotaAccion mapaAux = _mapper.Map<data.BitacotaAccion, models.BitacotaAccion>(BitacotaAccion);
 
-            return BitacotaAccion;
+            return mapaAux;
         }
 
         private bool BiracotaAccionExists(int id)

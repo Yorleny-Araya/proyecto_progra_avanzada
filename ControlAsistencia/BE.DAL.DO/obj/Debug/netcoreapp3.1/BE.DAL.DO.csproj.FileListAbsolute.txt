@@ -48,3 +48,16 @@ C:\Users\ellis\Source\Repos\proyecto_progra_avanzada1\ControlAsistencia\BE.DAL.D
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada1\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.dll
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada1\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.pdb
 C:\Users\ellis\Source\Repos\proyecto_progra_avanzada1\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.genruntimeconfig.cache
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.deps.json
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.runtimeconfig.json
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.runtimeconfig.dev.json
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.dll
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\bin\Debug\netcoreapp3.1\BE.DAL.DO.pdb
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.AssemblyInfoInputs.cache
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.AssemblyInfo.cs
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.csproj.CoreCompileInputs.cache
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.dll
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.pdb
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.genruntimeconfig.cache
+C:\Users\ellis\source\repos\proyecto_progra_avanzada_3\ControlAsistencia\BE.DAL.DO\obj\Debug\netcoreapp3.1\BE.DAL.DO.csproj.AssemblyReference.cache

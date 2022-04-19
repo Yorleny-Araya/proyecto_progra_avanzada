@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using data = BE.DAL.DO.Objetos;
 using models = BE.API.DataModels;
 

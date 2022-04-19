@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada_2\\ControlAsistencia\\API\\API.csproj": {}
+    "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada_3\\ControlAsistencia\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada_2\\ControlAsistencia\\API\\API.csproj": {
+    "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada_3\\ControlAsistencia\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada_2\\ControlAsistencia\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada_3\\ControlAsistencia\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada_2\\ControlAsistencia\\API\\API.csproj",
+        "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada_3\\ControlAsistencia\\API\\API.csproj",
         "packagesPath": "C:\\Users\\ellis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada_2\\ControlAsistencia\\API\\obj\\",
+        "outputPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada_3\\ControlAsistencia\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ellis\\AppData\\Roaming\\NuGet\\NuGet.Config",

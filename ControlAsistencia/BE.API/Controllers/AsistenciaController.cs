@@ -1,4 +1,5 @@
-﻿using BE.DAL.DO.Objetos;
+﻿using AutoMapper;
+using BE.DAL.DO.Objetos;
 using BE.DAL.EF;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -96,7 +97,7 @@ namespace BE.API.Controllers
                 BadRequest();
             }
 
-            return CreatedAtAction("GetAusencia", new { id = Ausencia.IdAusencia }, Ausencia);
+            return CreatedAtAction("GetAusencia", new { id = Asistencia.IdAsistencia }, Asistencia);
         }
 
         // DELETE: api/Asistencia/5

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IhGKNtjECkTQjbCL5ACmkdkAdAkd1nx7pOS3Liji4h2bUI4pm6PI0Qd/nBIV7JL0tVh1o9M66LWZ3xgxaebDGg==",
+  "dgSpecHash": "WsrUAVKQjBPY1je0/fX3MHCKeNIoO8F3FsBdXlZXaHw6crWybncHIBeR9tZWN0kZRFRD2ru38emT1x1Bj1fHQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ellis\\Source\\Repos\\proyecto_progra_avanzada_2\\ControlAsistencia\\BE.BS\\BE.BS.csproj",
+  "projectFilePath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada_3\\ControlAsistencia\\BE.BS\\BE.BS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ellis\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\ellis\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",

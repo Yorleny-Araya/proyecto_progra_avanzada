@@ -18,12 +18,12 @@ namespace BE.DAL.Repository
         }
         public async Task<IEnumerable<BitacotaSesion>> GetAllAsync()
         {
-            return await _db.BitacotaSesion.Include(n => n.IdEmpleado).ToListAsync();
+            return await _db.BitacotaSesion.Include(n => n.IdEmpleadoNavigation).ToListAsync();
         }
 
         public async Task<BitacotaSesion> GetOneByIdAsync(int id)
         {
-            return await _db.BitacotaSesion.Include(n => n.IdEmpleado).SingleOrDefaultAsync(n => n.IdBitacotaSesion == id);
+            return await _db.BitacotaSesion.Include(n => n.IdEmpleadoNavigation).SingleOrDefaultAsync(n => n.IdBitacotaSesion == id);
         }
 
         private NDbContext _db

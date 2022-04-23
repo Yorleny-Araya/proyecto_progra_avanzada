@@ -40,7 +40,10 @@ namespace BE.API
 
 
             var mapper = mappingConfig.CreateMapper();
-
+            services.AddControllers().AddNewtonsoftJson();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 
             services.AddSingleton(mapper);

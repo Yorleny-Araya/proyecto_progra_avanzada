@@ -30,7 +30,7 @@ namespace BE.BS
 
         public Task<IEnumerable<data.Ausencia>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _dal.GetAllAsync();
         }
 
         public data.Ausencia GetOneById(int id)
@@ -40,7 +40,7 @@ namespace BE.BS
 
         public Task<data.Ausencia> GetOneByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return _dal.GetOneByIdAsync(id);
         }
 
         public void Insert(data.Ausencia t)

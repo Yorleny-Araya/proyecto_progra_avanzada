@@ -17,12 +17,12 @@ namespace BE.DAL.Repository
         }
         public async Task<IEnumerable<Empleado>> GetAllAsync()
         {
-            return await _db.Empleado.Include(n => n.IdSede).ToListAsync();
+            return await _db.Empleado.Include(n => n.IdSedeNavigation).ToListAsync();
         }
 
         public async Task<Empleado> GetOneByIdAsync(int id)
         {
-            return await _db.Empleado.Include(n => n.IdSede).SingleOrDefaultAsync(n => n.IdEmpleado == id);
+            return await _db.Empleado.Include(n => n.IdSedeNavigation).SingleOrDefaultAsync(n => n.IdEmpleado == id);
         }
 
         private NDbContext _db

@@ -12,10 +12,10 @@ namespace BE.DAL
     public class Ausencia : ICRUD<data.Ausencia>
     {
 
-        private Repository<data.Ausencia> repo;
+        private RepositoryAusencia repo;
         public Ausencia(NDbContext dbContext)
         {
-            repo = new Repository<data.Ausencia>(dbContext);
+            repo = new RepositoryAusencia(dbContext);
         }
         public void Delete(data.Ausencia t)
         {
@@ -31,7 +31,7 @@ namespace BE.DAL
 
         public Task<IEnumerable<data.Ausencia>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return repo.GetAllAsync();
         }
 
         public data.Ausencia GetOneById(int id)
@@ -41,7 +41,7 @@ namespace BE.DAL
 
         public Task<data.Ausencia> GetOneByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return repo.GetOneByIdAsync(id);
         }
 
         public void Insert(data.Ausencia t)

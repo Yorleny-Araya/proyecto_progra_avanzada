@@ -17,12 +17,12 @@ namespace BE.DAL.Repository
         }
         public async Task<IEnumerable<BitacotaAccion>> GetAllAsync()
         {
-            return await _db.BitacotaAccion.Include(n => n.IdEmpleado).ToListAsync();
+            return await _db.BitacotaAccion.Include(n => n.IdEmpleadoNavigation).ToListAsync();
         }
 
         public async Task<BitacotaAccion> GetOneByIdAsync(int id)
         {
-            return await _db.BitacotaAccion.Include(n => n.IdEmpleado).SingleOrDefaultAsync(n => n.IdBitacotaAccion == id);
+            return await _db.BitacotaAccion.Include(n => n.IdEmpleadoNavigation).SingleOrDefaultAsync(n => n.IdBitacotaAccion == id);
         }
 
         private NDbContext _db

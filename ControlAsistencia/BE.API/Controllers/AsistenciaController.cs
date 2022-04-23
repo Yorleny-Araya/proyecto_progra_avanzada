@@ -29,10 +29,13 @@ namespace BE.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<models.Asistencia>>> GetAsistencia()
         {
+
             var res = await new BE.BS.Asistencia(_context).GetAllAsync();
             List<models.Asistencia> mapaAux = _mapper.Map<IEnumerable<data.Asistencia>, IEnumerable<models.Asistencia>>(res).ToList();
             return mapaAux;
         }
+
+
 
         // GET: api/Asistencia/5
         [HttpGet("{id}")]
@@ -81,7 +84,7 @@ namespace BE.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Ausencia
+        // POST: api/Asistencia
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
@@ -97,7 +100,7 @@ namespace BE.API.Controllers
                 BadRequest();
             }
 
-            return CreatedAtAction("GetAusencia", new { id = Asistencia.IdAsistencia }, Asistencia);
+            return CreatedAtAction("GetAsistencia", new { id = Asistencia.IdAsistencia }, Asistencia);
         }
 
         // DELETE: api/Asistencia/5

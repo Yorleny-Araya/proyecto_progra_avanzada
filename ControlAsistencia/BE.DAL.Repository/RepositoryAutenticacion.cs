@@ -17,12 +17,12 @@ namespace BE.DAL.Repository
         }
         public async Task<IEnumerable<Autenticacion>> GetAllAsync()
         {
-            return await _db.Autenticacion.Include(n => n.IdEmpleado).Include(m => m.IdRol).ToListAsync();
+            return await _db.Autenticacion.Include(n => n.IdEmpleadoNavigation).Include(m => m.IdRolNavigation).ToListAsync();
         }
 
         public async Task<Autenticacion> GetOneByIdAsync(int id)
         {
-            return await _db.Autenticacion.Include(n => n.IdEmpleado).Include(m => m.IdRol).SingleOrDefaultAsync(n => n.IdAutenticacion == id);
+            return await _db.Autenticacion.Include(n => n.IdEmpleadoNavigation).Include(m => m.IdRolNavigation).SingleOrDefaultAsync(n => n.IdAutenticacion == id);
         }
 
         private NDbContext _db

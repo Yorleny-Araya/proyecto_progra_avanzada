@@ -12,10 +12,10 @@ namespace BE.DAL
     public class Asistencia : ICRUD<data.Asistencia>
     {
 
-        private Repository<data.Asistencia> repo;
+        private RepositoryAsistencia repo;
         public Asistencia(NDbContext dbContext)
         {
-            repo = new Repository<data.Asistencia>(dbContext);
+            repo = new RepositoryAsistencia(dbContext);
         }
         public void Delete(data.Asistencia t)
         {
@@ -30,7 +30,7 @@ namespace BE.DAL
 
         public Task<IEnumerable<data.Asistencia>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return repo.GetAllAsync();
         }
 
         public data.Asistencia GetOneById(int id)
@@ -40,7 +40,7 @@ namespace BE.DAL
 
         public Task<data.Asistencia> GetOneByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return repo.GetOneByIdAsync(id);
         }
 
         public void Insert(data.Asistencia t)

@@ -28,7 +28,7 @@ namespace BE.BS
 
         public Task<IEnumerable<data.Asistencia>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _dal.GetAllAsync();
         }
 
         public data.Asistencia GetOneById(int id)
@@ -38,7 +38,7 @@ namespace BE.BS
 
         public Task<data.Asistencia> GetOneByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return _dal.GetOneByIdAsync(id);
         }
 
         public void Insert(data.Asistencia t)

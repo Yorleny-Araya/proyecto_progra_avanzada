@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FE.Wizzard.Models.Ausencia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantDias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoAusenciaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantDias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoAusenciaNavigation.TipoAusencia1)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAusencia">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAusencia">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAusencia">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

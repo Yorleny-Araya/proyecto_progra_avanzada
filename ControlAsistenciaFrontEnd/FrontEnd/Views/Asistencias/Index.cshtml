@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Nueva Asistencia</a>
 </p>
-<table class="table table-bordered">
+<table id="asistencia" class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -28,26 +28,69 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hora)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdTipoAsistenciaNavigation.TipoAsistencia1)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdAsistencia">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAsistencia">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdAsistencia">Eliminar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTipoAsistenciaNavigation.TipoAsistencia1)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAsistencia">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdAsistencia">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdAsistencia">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+@*<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+<!-- DataTables  & Plugins -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $.noConflict();
+        $("#asistencia").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": [{"extend": 'excelHtml5',
+                    "exportOptions": {
+                        "columns": [0, 1, 2, 3]
+                }
+            }, {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [0, 1, 2, 3]
+                }
+            },],
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        }).buttons().container().appendTo('#asistencia_wrapper .col-md-6:eq(0)');
+    });</script>

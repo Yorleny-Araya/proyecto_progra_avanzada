@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {}
+    "C:\\Users\\yovag\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {
+    "C:\\Users\\yovag\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
+        "projectUniqueName": "C:\\Users\\yovag\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
         "projectName": "FrontEnd",
-        "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
-        "packagesPath": "C:\\Users\\ellis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\obj\\",
+        "projectPath": "C:\\Users\\yovag\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
+        "packagesPath": "C:\\Users\\yovag\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yovag\\Source\\Repos\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ellis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yovag\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     }

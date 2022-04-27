@@ -5,26 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FE.Wizzard.Models;
+using FrontEnd.Models;
+using FrontEnd.Servicios;
 
-namespace FE.Wizzard.Controllers
+namespace FrontEnd.Controllers
 {
     public class TipoAsistenciasController : Controller
     {
-        private readonly Control_AsistenciaContext _context;
+        private readonly ITipoAsistenciaServices tipoAsistenciaServices;
 
-        public TipoAsistenciasController(Control_AsistenciaContext context)
+        public TipoAsistenciasController(ITipoAsistenciaServices _tipoAsistenciaServices)
         {
-            _context = context;
+            tipoAsistenciaServices = _tipoAsistenciaServices;
         }
 
-        // GET: TipoAsistencias
+        // GET: TipoAsistencia
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TipoAsistencia.ToListAsync());
+            return View(tipoAsistenciaServices.GetAll());
         }
 
-        // GET: TipoAsistencias/Details/5
+        // GET: TipoAsistencia/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,8 +33,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var tipoAsistencia = await _context.TipoAsistencia
-                .FirstOrDefaultAsync(m => m.IdTipoAsistencia == id);
+            var tipoAsistencia = tipoAsistenciaServices.GetOneById((int)id);
             if (tipoAsistencia == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace FE.Wizzard.Controllers
             return View();
         }
 
-        // POST: TipoAsistencias/Create
+        // POST: TipoAsistencia/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -57,14 +57,13 @@ namespace FE.Wizzard.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tipoAsistencia);
-                await _context.SaveChangesAsync();
+                tipoAsistenciaServices.Insert(tipoAsistencia);
                 return RedirectToAction(nameof(Index));
             }
-            return View(tipoAsistencia);
+            return View(tipoAsistencia); ;
         }
 
-        // GET: TipoAsistencias/Edit/5
+        // GET: TipoAsistencia/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,7 +71,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var tipoAsistencia = await _context.TipoAsistencia.FindAsync(id);
+            var tipoAsistencia = tipoAsistenciaServices.GetOneById((int)id);
             if (tipoAsistencia == null)
             {
                 return NotFound();
@@ -80,7 +79,7 @@ namespace FE.Wizzard.Controllers
             return View(tipoAsistencia);
         }
 
-        // POST: TipoAsistencias/Edit/5
+        // POST: TipoAsistencia/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -96,10 +95,9 @@ namespace FE.Wizzard.Controllers
             {
                 try
                 {
-                    _context.Update(tipoAsistencia);
-                    await _context.SaveChangesAsync();
+                    tipoAsistenciaServices.Update(tipoAsistencia);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ee)
                 {
                     if (!TipoAsistenciaExists(tipoAsistencia.IdTipoAsistencia))
                     {
@@ -123,8 +121,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var tipoAsistencia = await _context.TipoAsistencia
-                .FirstOrDefaultAsync(m => m.IdTipoAsistencia == id);
+            var tipoAsistencia = tipoAsistenciaServices.GetOneById((int)id);
             if (tipoAsistencia == null)
             {
                 return NotFound();
@@ -138,15 +135,14 @@ namespace FE.Wizzard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tipoAsistencia = await _context.TipoAsistencia.FindAsync(id);
-            _context.TipoAsistencia.Remove(tipoAsistencia);
-            await _context.SaveChangesAsync();
+            var tipoAusencia = tipoAsistenciaServices.GetOneById((int)id);
+            tipoAsistenciaServices.Delete(tipoAusencia);
             return RedirectToAction(nameof(Index));
         }
 
         private bool TipoAsistenciaExists(int id)
         {
-            return _context.TipoAsistencia.Any(e => e.IdTipoAsistencia == id);
+  return (tipoAsistenciaServices.GetOneById((int)id) != null);
         }
     }
 }

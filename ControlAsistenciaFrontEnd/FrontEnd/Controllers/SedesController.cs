@@ -5,23 +5,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FE.Wizzard.Models;
+using FrontEnd.Models;
+using FrontEnd.Servicios;
 
-namespace FE.Wizzard.Controllers
+
+namespace FrontEnd.Controllers
 {
     public class SedesController : Controller
     {
-        private readonly Control_AsistenciaContext _context;
+        private readonly ISedeServices sedeServices;
 
-        public SedesController(Control_AsistenciaContext context)
+        public SedesController(ISedeServices _sedesServices)
         {
-            _context = context;
+            sedeServices = _sedesServices;
         }
 
         // GET: Sedes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Sede.ToListAsync());
+            return View(sedeServices.GetAll());
         }
 
         // GET: Sedes/Details/5
@@ -32,8 +34,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var sede = await _context.Sede
-                .FirstOrDefaultAsync(m => m.IdSede == id);
+            var sede = sedeServices.GetOneById((int)id);
             if (sede == null)
             {
                 return NotFound();
@@ -57,11 +58,10 @@ namespace FE.Wizzard.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(sede);
-                await _context.SaveChangesAsync();
+                sedeServices.Insert(sede);
                 return RedirectToAction(nameof(Index));
             }
-            return View(sede);
+            return View(sede); ;
         }
 
         // GET: Sedes/Edit/5
@@ -72,7 +72,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var sede = await _context.Sede.FindAsync(id);
+            var sede = sedeServices.GetOneById((int)id);
             if (sede == null)
             {
                 return NotFound();
@@ -96,10 +96,9 @@ namespace FE.Wizzard.Controllers
             {
                 try
                 {
-                    _context.Update(sede);
-                    await _context.SaveChangesAsync();
+                    sedeServices.Update(sede);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ee)
                 {
                     if (!SedeExists(sede.IdSede))
                     {
@@ -123,8 +122,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var sede = await _context.Sede
-                .FirstOrDefaultAsync(m => m.IdSede == id);
+            var sede = sedeServices.GetOneById((int)id);
             if (sede == null)
             {
                 return NotFound();
@@ -138,15 +136,15 @@ namespace FE.Wizzard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var sede = await _context.Sede.FindAsync(id);
-            _context.Sede.Remove(sede);
-            await _context.SaveChangesAsync();
+
+            var sede = sedeServices.GetOneById((int)id);
+            sedeServices.Delete(sede);
             return RedirectToAction(nameof(Index));
         }
 
         private bool SedeExists(int id)
         {
-            return _context.Sede.Any(e => e.IdSede == id);
+            return (sedeServices.GetOneById((int)id) != null);
         }
     }
 }

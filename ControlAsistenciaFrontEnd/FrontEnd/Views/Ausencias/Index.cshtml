@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FE.Wizzard.Models.Ausencia>
+﻿@model IEnumerable<FrontEnd.Models.Ausencia>
 
 @{
     ViewData["Title"] = "Index";
@@ -49,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.Motivo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Correo)
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdTipoAusenciaNavigation.TipoAusencia1)

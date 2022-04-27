@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace FE.Wizzard.Models
+namespace FrontEnd.Models
 {
     public partial class Empleado
     {
@@ -25,7 +25,6 @@ namespace FE.Wizzard.Models
         public string Telefono { get; set; }
         public string Correo { get; set; }
         public int CantVacaciones { get; set; }
-        public byte[] Huella { get; set; }
         public int IdSede { get; set; }
 
         public virtual Sede IdSedeNavigation { get; set; }

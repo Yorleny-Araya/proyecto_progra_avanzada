@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FE.Wizzard.Models.BitacotaSesion>
+﻿@model IEnumerable<FrontEnd.Models.BitacotaSesion>
 
 @{
     ViewData["Title"] = "Index";
@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.Hora)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
+                @Html.DisplayNameFor(model => model.IdEmpleado)
             </th>
             <th></th>
         </tr>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.Hora)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Correo)
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdBitacotaSesion">Edit</a> |

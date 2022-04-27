@@ -5,25 +5,30 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FE.Wizzard.Models;
+using FrontEnd.Models;
+using FrontEnd.Servicios;
 
-namespace FE.Wizzard.Controllers
+namespace FrontEnd.Controllers
 {
     public class AusenciasController : Controller
     {
-        private readonly Control_AsistenciaContext _context;
+        private readonly IEmpleadoServices empeladoService;
+        private readonly ITipoAusenciaServices tipoAusenciaService;
+        private readonly IAusenciaServices ausenciaService;
 
-        public AusenciasController(Control_AsistenciaContext context)
+        public AusenciasController(ITipoAusenciaServices _tipoAusenciaService, IEmpleadoServices _empleadoService, IAusenciaServices _ausenciaService)
         {
-            _context = context;
+            tipoAusenciaService = _tipoAusenciaService;
+            empeladoService = _empleadoService;
+            ausenciaService = _ausenciaService;
         }
 
         // GET: Ausencias
         public async Task<IActionResult> Index()
-        {
-            var control_AsistenciaContext = _context.Ausencia.Include(a => a.IdEmpleadoNavigation).Include(a => a.IdTipoAusenciaNavigation);
-            return View(await control_AsistenciaContext.ToListAsync());
-        }
+        
+            {
+                return View(await ausenciaService.GetAllAsync());
+            }
 
         // GET: Ausencias/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -33,10 +38,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var ausencia = await _context.Ausencia
-                .Include(a => a.IdEmpleadoNavigation)
-                .Include(a => a.IdTipoAusenciaNavigation)
-                .FirstOrDefaultAsync(m => m.IdAusencia == id);
+            var ausencia = await ausenciaService.GetOneByIdAsync((int)id);
             if (ausencia == null)
             {
                 return NotFound();
@@ -45,11 +47,13 @@ namespace FE.Wizzard.Controllers
             return View(ausencia);
         }
 
-        // GET: Ausencias/Create
-        public IActionResult Create()
+    
+
+    // GET: Ausencias/Create
+    public IActionResult Create()
         {
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo");
-            ViewData["IdTipoAusencia"] = new SelectList(_context.TipoAusencia, "IdTipoAusencia", "TipoAusencia1");
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAusencia"] = new SelectList(tipoAusenciaService.GetAll(),"IdTipoAusencia", "TipoAusencia1");
             return View();
         }
 
@@ -58,16 +62,15 @@ namespace FE.Wizzard.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdAusencia,IdEmpleado,FechaInicio,FechaFinal,CantDias,Motivo,IdTipoAusencia")] Ausencia ausencia)
+        public async Task<IActionResult> Create( [Bind("IdAusencia,IdEmpleado,FechaInicio,FechaFinal,CantDias,Motivo,IdTipoAusencia")] Ausencia ausencia)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ausencia);
-                await _context.SaveChangesAsync();
+                ausenciaService.Insert(ausencia);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", ausencia.IdEmpleado);
-            ViewData["IdTipoAusencia"] = new SelectList(_context.TipoAusencia, "IdTipoAusencia", "TipoAusencia1", ausencia.IdTipoAusencia);
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAusencia"] = new SelectList(tipoAusenciaService.GetAll(), "IdTipoAusencia", "TipoAusencia1");
             return View(ausencia);
         }
 
@@ -79,13 +82,13 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var ausencia = await _context.Ausencia.FindAsync(id);
+            var ausencia = await ausenciaService.GetOneByIdAsync((int)id);
             if (ausencia == null)
             {
                 return NotFound();
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", ausencia.IdEmpleado);
-            ViewData["IdTipoAusencia"] = new SelectList(_context.TipoAusencia, "IdTipoAusencia", "TipoAusencia1", ausencia.IdTipoAusencia);
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAusencia"] = new SelectList(tipoAusenciaService.GetAll(), "IdTipoAusencia", "TipoAusencia1");
             return View(ausencia);
         }
 
@@ -96,7 +99,7 @@ namespace FE.Wizzard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdAusencia,IdEmpleado,FechaInicio,FechaFinal,CantDias,Motivo,IdTipoAusencia")] Ausencia ausencia)
         {
-            if (id != ausencia.IdAusencia)
+            if (id != ausencia.IdEmpleado)
             {
                 return NotFound();
             }
@@ -105,12 +108,11 @@ namespace FE.Wizzard.Controllers
             {
                 try
                 {
-                    _context.Update(ausencia);
-                    await _context.SaveChangesAsync();
+                    ausenciaService.Update(ausencia);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ee)
                 {
-                    if (!AusenciaExists(ausencia.IdAusencia))
+                    if (!AusenciaExists(ausencia.IdEmpleado))
                     {
                         return NotFound();
                     }
@@ -121,8 +123,8 @@ namespace FE.Wizzard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", ausencia.IdEmpleado);
-            ViewData["IdTipoAusencia"] = new SelectList(_context.TipoAusencia, "IdTipoAusencia", "TipoAusencia1", ausencia.IdTipoAusencia);
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAusencia"] = new SelectList(tipoAusenciaService.GetAll(), "IdTipoAusencia", "TipoAusencia1");
             return View(ausencia);
         }
 
@@ -134,14 +136,12 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var ausencia = await _context.Ausencia
-                .Include(a => a.IdEmpleadoNavigation)
-                .Include(a => a.IdTipoAusenciaNavigation)
-                .FirstOrDefaultAsync(m => m.IdAusencia == id);
+            var ausencia = await ausenciaService.GetOneByIdAsync((int)id);
             if (ausencia == null)
             {
                 return NotFound();
             }
+
 
             return View(ausencia);
         }
@@ -151,15 +151,14 @@ namespace FE.Wizzard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var ausencia = await _context.Ausencia.FindAsync(id);
-            _context.Ausencia.Remove(ausencia);
-            await _context.SaveChangesAsync();
+            var ausencia = await ausenciaService.GetOneByIdAsync((int)id);
+            ausenciaService.Delete(ausencia);
             return RedirectToAction(nameof(Index));
         }
 
         private bool AusenciaExists(int id)
         {
-            return _context.Ausencia.Any(e => e.IdAusencia == id);
+            return (ausenciaService.GetOneByIdAsync((int)id) != null);
         }
     }
 }

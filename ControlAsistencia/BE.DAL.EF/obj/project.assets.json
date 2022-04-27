@@ -5694,23 +5694,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Yorleny\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ellis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj",
+      "projectUniqueName": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj",
       "projectName": "BE.DAL.EF",
-      "projectPath": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj",
-      "packagesPath": "C:\\Users\\Yorleny\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.EF\\obj\\",
+      "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistencia\\BE.DAL.EF\\BE.DAL.EF.csproj",
+      "packagesPath": "C:\\Users\\ellis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistencia\\BE.DAL.EF\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Yorleny\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ellis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5724,8 +5720,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj": {
-              "projectPath": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj"
+            "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj": {
+              "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistencia\\BE.DAL.DO\\BE.DAL.DO.csproj"
             }
           }
         }
@@ -5776,7 +5772,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

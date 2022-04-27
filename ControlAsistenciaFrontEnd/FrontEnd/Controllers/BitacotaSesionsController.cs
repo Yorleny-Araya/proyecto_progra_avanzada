@@ -5,24 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FE.Wizzard.Models;
+using FrontEnd.Models;
 
-namespace FE.Wizzard.Controllers
+using FrontEnd.Servicios;
+
+namespace FrontEnd.Controllers
 {
     public class BitacotaSesionsController : Controller
     {
-        private readonly Control_AsistenciaContext _context;
+        private readonly IBitacotaSesionServices bitacotaSesionService;
+        private readonly IEmpleadoServices empleadoService;
 
-        public BitacotaSesionsController(Control_AsistenciaContext context)
+        public BitacotaSesionsController(IBitacotaSesionServices _bitacotaAccionService, IEmpleadoServices _empleadoService)
         {
-            _context = context;
+            bitacotaSesionService = _bitacotaAccionService;
+            empleadoService = _empleadoService;
         }
 
         // GET: BitacotaSesions
         public async Task<IActionResult> Index()
         {
-            var control_AsistenciaContext = _context.BitacotaSesion.Include(b => b.IdEmpleadoNavigation);
-            return View(await control_AsistenciaContext.ToListAsync());
+            return View(await bitacotaSesionService.GetAllAsync());
         }
 
         // GET: BitacotaSesions/Details/5
@@ -33,9 +36,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var bitacotaSesion = await _context.BitacotaSesion
-                .Include(b => b.IdEmpleadoNavigation)
-                .FirstOrDefaultAsync(m => m.IdBitacotaSesion == id);
+            var bitacotaSesion = await bitacotaSesionService.GetOneByIdAsync((int)id);
             if (bitacotaSesion == null)
             {
                 return NotFound();
@@ -47,7 +48,7 @@ namespace FE.Wizzard.Controllers
         // GET: BitacotaSesions/Create
         public IActionResult Create()
         {
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo");
+            ViewData["IdEmpleado"] = new SelectList(empleadoService.GetAll(), "IdEmpleado", "Nombre");
             return View();
         }
 
@@ -60,11 +61,10 @@ namespace FE.Wizzard.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bitacotaSesion);
-                await _context.SaveChangesAsync();
+                bitacotaSesionService.Insert(bitacotaSesion);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", bitacotaSesion.IdEmpleado);
+            ViewData["IdEmpleado"] = new SelectList(empleadoService.GetAll(), "IdEmpleado", "Nombre", bitacotaSesion.IdEmpleado);
             return View(bitacotaSesion);
         }
 
@@ -76,12 +76,12 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var bitacotaSesion = await _context.BitacotaSesion.FindAsync(id);
+            var bitacotaSesion = await bitacotaSesionService.GetOneByIdAsync((int)id);
             if (bitacotaSesion == null)
             {
                 return NotFound();
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", bitacotaSesion.IdEmpleado);
+            ViewData["IdEmpleado"] = new SelectList(empleadoService.GetAll(), "IdEmpleado", "Nombre", bitacotaSesion.IdEmpleado);
             return View(bitacotaSesion);
         }
 
@@ -92,7 +92,7 @@ namespace FE.Wizzard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdBitacotaSesion,IdEmpleado,Fecha,Hora")] BitacotaSesion bitacotaSesion)
         {
-            if (id != bitacotaSesion.IdBitacotaSesion)
+              if (id != bitacotaSesion.IdBitacotaSesion)
             {
                 return NotFound();
             }
@@ -101,10 +101,9 @@ namespace FE.Wizzard.Controllers
             {
                 try
                 {
-                    _context.Update(bitacotaSesion);
-                    await _context.SaveChangesAsync();
+                    bitacotaSesionService.Update(bitacotaSesion);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ee)
                 {
                     if (!BitacotaSesionExists(bitacotaSesion.IdBitacotaSesion))
                     {
@@ -117,43 +116,41 @@ namespace FE.Wizzard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", bitacotaSesion.IdEmpleado);
-            return View(bitacotaSesion);
+                ViewData["IdEmpleado"] = new SelectList(empleadoService.GetAll(), "IdEmpleado", "Nombre", bitacotaSesion.IdEmpleado);
+                return View(bitacotaSesion);
         }
+        
 
         // GET: BitacotaSesions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var bitacotaSesion = await _context.BitacotaSesion
-                .Include(b => b.IdEmpleadoNavigation)
-                .FirstOrDefaultAsync(m => m.IdBitacotaSesion == id);
-            if (bitacotaSesion == null)
-            {
-                return NotFound();
-            }
+                var bitacotaSesion = await bitacotaSesionService.GetOneByIdAsync((int)id);
+                if (bitacotaSesion == null)
+                {
+                    return NotFound();
+                }
 
-            return View(bitacotaSesion);
-        }
+                return View(bitacotaSesion);
+            }
 
         // POST: BitacotaSesions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var bitacotaSesion = await _context.BitacotaSesion.FindAsync(id);
-            _context.BitacotaSesion.Remove(bitacotaSesion);
-            await _context.SaveChangesAsync();
+            var bitacotaSesion = await bitacotaSesionService.GetOneByIdAsync((int)id);
+            bitacotaSesionService.Delete(bitacotaSesion);
             return RedirectToAction(nameof(Index));
         }
 
         private bool BitacotaSesionExists(int id)
         {
-            return _context.BitacotaSesion.Any(e => e.IdBitacotaSesion == id);
+            return (bitacotaSesionService.GetOneByIdAsync((int)id) != null);
         }
     }
 }

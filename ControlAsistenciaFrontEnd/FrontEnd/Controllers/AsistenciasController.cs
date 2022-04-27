@@ -5,24 +5,30 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FE.Wizzard.Models;
+using FrontEnd.Models;
+using FrontEnd.Servicios;
 
-namespace FE.Wizzard.Controllers
+
+namespace FrontdEnd.Controllers
 {
     public class AsistenciasController : Controller
     {
-        private readonly Control_AsistenciaContext _context;
+        private readonly IEmpleadoServices empeladoService;
+        private readonly ITipoAsistenciaServices tipoAsistenciaService;
+        private readonly IAsistenciaServices asistenciaService;
 
-        public AsistenciasController(Control_AsistenciaContext context)
+        public AsistenciasController(ITipoAsistenciaServices _tipoAsistenciaService, IEmpleadoServices _empleadoService, IAsistenciaServices _asistenciaService)
         {
-            _context = context;
+            tipoAsistenciaService = _tipoAsistenciaService;
+            empeladoService = _empleadoService;
+            asistenciaService = _asistenciaService;
         }
 
         // GET: Asistencias
         public async Task<IActionResult> Index()
         {
-            var control_AsistenciaContext = _context.Asistencia.Include(a => a.IdEmpleadoNavigation).Include(a => a.IdTipoAsistenciaNavigation);
-            return View(await control_AsistenciaContext.ToListAsync());
+
+            return View(await asistenciaService.GetAllAsync());
         }
 
         // GET: Asistencias/Details/5
@@ -33,10 +39,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var asistencia = await _context.Asistencia
-                .Include(a => a.IdEmpleadoNavigation)
-                .Include(a => a.IdTipoAsistenciaNavigation)
-                .FirstOrDefaultAsync(m => m.IdAsistencia == id);
+            var asistencia = await asistenciaService.GetOneByIdAsync((int)id);
             if (asistencia == null)
             {
                 return NotFound();
@@ -48,8 +51,8 @@ namespace FE.Wizzard.Controllers
         // GET: Asistencias/Create
         public IActionResult Create()
         {
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo");
-            ViewData["IdTipoAsistencia"] = new SelectList(_context.TipoAsistencia, "IdTipoAsistencia", "TipoAsistencia1");
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAsistencia"] = new SelectList(tipoAsistenciaService.GetAll(), "IdTipoAsistencia", "TipoAsistencia1");
             return View();
         }
 
@@ -62,12 +65,11 @@ namespace FE.Wizzard.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(asistencia);
-                await _context.SaveChangesAsync();
+                asistenciaService.Insert(asistencia);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", asistencia.IdEmpleado);
-            ViewData["IdTipoAsistencia"] = new SelectList(_context.TipoAsistencia, "IdTipoAsistencia", "TipoAsistencia1", asistencia.IdTipoAsistencia);
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAsistencia"] = new SelectList(tipoAsistenciaService.GetAll(), "IdTipoAsistencia", "TipoAsistencia1");
             return View(asistencia);
         }
 
@@ -79,13 +81,13 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var asistencia = await _context.Asistencia.FindAsync(id);
+            var asistencia = await asistenciaService.GetOneByIdAsync((int)id);
             if (asistencia == null)
             {
                 return NotFound();
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", asistencia.IdEmpleado);
-            ViewData["IdTipoAsistencia"] = new SelectList(_context.TipoAsistencia, "IdTipoAsistencia", "TipoAsistencia1", asistencia.IdTipoAsistencia);
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAsistencia"] = new SelectList(tipoAsistenciaService.GetAll(), "IdTipoAsistencia", "TipoAsistencia1");
             return View(asistencia);
         }
 
@@ -96,7 +98,7 @@ namespace FE.Wizzard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdAsistencia,IdEmpleado,Fecha,Hora,IdTipoAsistencia")] Asistencia asistencia)
         {
-            if (id != asistencia.IdAsistencia)
+            if (id != asistencia.IdEmpleado)
             {
                 return NotFound();
             }
@@ -105,12 +107,11 @@ namespace FE.Wizzard.Controllers
             {
                 try
                 {
-                    _context.Update(asistencia);
-                    await _context.SaveChangesAsync();
+                    asistenciaService.Update(asistencia);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ee)
                 {
-                    if (!AsistenciaExists(asistencia.IdAsistencia))
+                    if (!AsistenciaExists(asistencia.IdEmpleado))
                     {
                         return NotFound();
                     }
@@ -121,8 +122,8 @@ namespace FE.Wizzard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpleado"] = new SelectList(_context.Empleado, "IdEmpleado", "Correo", asistencia.IdEmpleado);
-            ViewData["IdTipoAsistencia"] = new SelectList(_context.TipoAsistencia, "IdTipoAsistencia", "TipoAsistencia1", asistencia.IdTipoAsistencia);
+            ViewData["IdEmpleado"] = new SelectList(empeladoService.GetAll(), "IdEmpleado", "Nombre");
+            ViewData["IdTipoAsistencia"] = new SelectList(tipoAsistenciaService.GetAll(), "IdTipoAsistencia", "TipoAsistencia1");
             return View(asistencia);
         }
 
@@ -134,14 +135,12 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var asistencia = await _context.Asistencia
-                .Include(a => a.IdEmpleadoNavigation)
-                .Include(a => a.IdTipoAsistenciaNavigation)
-                .FirstOrDefaultAsync(m => m.IdAsistencia == id);
+            var asistencia = await asistenciaService.GetOneByIdAsync((int)id);
             if (asistencia == null)
             {
                 return NotFound();
             }
+
 
             return View(asistencia);
         }
@@ -151,15 +150,14 @@ namespace FE.Wizzard.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var asistencia = await _context.Asistencia.FindAsync(id);
-            _context.Asistencia.Remove(asistencia);
-            await _context.SaveChangesAsync();
+            var asistencia = await asistenciaService.GetOneByIdAsync((int)id);
+            asistenciaService.Delete(asistencia);
             return RedirectToAction(nameof(Index));
         }
 
         private bool AsistenciaExists(int id)
         {
-            return _context.Asistencia.Any(e => e.IdAsistencia == id);
+            return (asistenciaService.GetOneByIdAsync((int)id) != null);
         }
     }
 }

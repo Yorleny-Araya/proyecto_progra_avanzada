@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace FE.Wizzard.Models
+namespace FrontEnd.Models
 {
     public partial class Control_AsistenciaContext : DbContext
     {
@@ -214,7 +214,6 @@ namespace FE.Wizzard.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Huella).HasColumnName("huella");
 
                 entity.Property(e => e.IdSede).HasColumnName("idSede");
 

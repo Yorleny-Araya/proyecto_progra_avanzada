@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FE.Wizzard.Models.Asistencia>
+﻿@model IEnumerable<FrontEnd.Models.Asistencia>
 
 @{
     ViewData["Title"] = "Index";
@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Hora)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Correo)
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdTipoAsistenciaNavigation.TipoAsistencia1)

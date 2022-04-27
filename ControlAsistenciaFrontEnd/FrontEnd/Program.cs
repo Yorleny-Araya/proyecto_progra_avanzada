@@ -11,6 +11,8 @@ namespace FrontEnd
 {
     public class Program
     {
+        // URL Del API 
+        public static string baseurl = "http://localhost:39007/";
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

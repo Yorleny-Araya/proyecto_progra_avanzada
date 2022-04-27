@@ -1,4 +1,5 @@
 using FrontEnd.Data;
+using FrontEnd.Servicios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,18 @@ namespace FrontEnd
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
+            services.AddScoped<IAsistenciaServices, AsistenciaServices>();
+            services.AddScoped<IAusenciaServices, AusenciaServices>();
+            services.AddScoped<IAutenticacionServices, AutenticacionServices>();
+            services.AddScoped<IBitacotaAccionServices, BitacotaAccionServices>();
+            services.AddScoped<IBitacotaSesionServices, BitacotaSesionServices>();
+            services.AddScoped<IEmpleadoServices, EmpleadoServices>();
+            services.AddScoped<ISedeServices, SedeServices>();
+            services.AddScoped<ITipoAsistenciaServices, TipoAsistenciaServices>();
+            services.AddScoped<ITipoAusenciaServices, TipoAusenciaServices>();
+            services.AddScoped<IRolServices, RolServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

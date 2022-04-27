@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {}
+    "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {
+    "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
+        "projectUniqueName": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
         "projectName": "FrontEnd",
-        "projectPath": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
-        "packagesPath": "C:\\Users\\Yorleny\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yorleny\\proyecto_progra_avanzada\\proyecto_progra_avanzada\\ControlAsistenciaFrontEnd\\FrontEnd\\obj\\",
+        "projectPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\FrontEnd.csproj",
+        "packagesPath": "C:\\Users\\ellis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ellis\\source\\repos\\proyecto_progra_avanzada4\\ControlAsistenciaFrontEnd\\FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Yorleny\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ellis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -74,12 +71,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.21, 3.1.21]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -88,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

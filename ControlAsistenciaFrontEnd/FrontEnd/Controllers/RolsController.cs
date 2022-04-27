@@ -5,26 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FE.Wizzard.Models;
+using FrontEnd.Models;
+using FrontEnd.Servicios;
 
-namespace FE.Wizzard.Controllers
+namespace FrontEnd.Controllers
 {
     public class RolsController : Controller
     {
-        private readonly Control_AsistenciaContext _context;
+        private readonly IRolServices rolServices;
 
-        public RolsController(Control_AsistenciaContext context)
+        public RolsController(IRolServices _sedeServices)
         {
-            _context = context;
+            rolServices = _sedeServices;
         }
 
-        // GET: Rols
+        // GET: Rol
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Rol.ToListAsync());
+            return View(rolServices.GetAll());
         }
 
-        // GET: Rols/Details/5
+        // GET: Rol/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,8 +33,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var rol = await _context.Rol
-                .FirstOrDefaultAsync(m => m.IdRol == id);
+            var rol = rolServices.GetOneById((int)id);
             if (rol == null)
             {
                 return NotFound();
@@ -42,13 +42,13 @@ namespace FE.Wizzard.Controllers
             return View(rol);
         }
 
-        // GET: Rols/Create
+        // GET: Rol/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Rols/Create
+        // POST: Rol/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -57,14 +57,13 @@ namespace FE.Wizzard.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rol);
-                await _context.SaveChangesAsync();
+                rolServices.Insert(rol);
                 return RedirectToAction(nameof(Index));
             }
-            return View(rol);
+            return View(rol); ;
         }
 
-        // GET: Rols/Edit/5
+        // GET: Rol/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,7 +71,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var rol = await _context.Rol.FindAsync(id);
+            var rol = rolServices.GetOneById((int)id);
             if (rol == null)
             {
                 return NotFound();
@@ -80,7 +79,7 @@ namespace FE.Wizzard.Controllers
             return View(rol);
         }
 
-        // POST: Rols/Edit/5
+        // POST: Rol/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -96,10 +95,9 @@ namespace FE.Wizzard.Controllers
             {
                 try
                 {
-                    _context.Update(rol);
-                    await _context.SaveChangesAsync();
+                    rolServices.Update(rol);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ee)
                 {
                     if (!RolExists(rol.IdRol))
                     {
@@ -115,7 +113,7 @@ namespace FE.Wizzard.Controllers
             return View(rol);
         }
 
-        // GET: Rols/Delete/5
+        // GET: Rol/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,8 +121,7 @@ namespace FE.Wizzard.Controllers
                 return NotFound();
             }
 
-            var rol = await _context.Rol
-                .FirstOrDefaultAsync(m => m.IdRol == id);
+            var rol = rolServices.GetOneById((int)id);
             if (rol == null)
             {
                 return NotFound();
@@ -133,20 +130,20 @@ namespace FE.Wizzard.Controllers
             return View(rol);
         }
 
-        // POST: Rols/Delete/5
+        // POST: Rol/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var rol = await _context.Rol.FindAsync(id);
-            _context.Rol.Remove(rol);
-            await _context.SaveChangesAsync();
+           
+            var rol = rolServices.GetOneById((int)id);
+            rolServices.Delete(rol);
             return RedirectToAction(nameof(Index));
         }
 
         private bool RolExists(int id)
         {
-            return _context.Rol.Any(e => e.IdRol == id);
+            return (rolServices.GetOneById((int)id) != null);
         }
     }
 }

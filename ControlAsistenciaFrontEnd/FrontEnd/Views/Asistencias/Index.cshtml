@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<FrontEnd.Models.Asistencia>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Asistencias";
 }
 
-<h1>Index</h1>
+<h1>Asistencia</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nueva Asistencia</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.IdTipoAsistenciaNavigation.TipoAsistencia1)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdAsistencia">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAsistencia">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdAsistencia">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdAsistencia">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAsistencia">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAsistencia">Eliminar</a>
             </td>
         </tr>
 }

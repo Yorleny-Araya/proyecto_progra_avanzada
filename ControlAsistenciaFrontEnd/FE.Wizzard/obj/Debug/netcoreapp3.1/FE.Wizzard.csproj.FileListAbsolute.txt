@@ -423,3 +423,8 @@ C:\Users\ellis\source\repos\proyecto_progra_avanzada4\ControlAsistenciaFrontEnd\
 C:\Users\ellis\source\repos\proyecto_progra_avanzada4\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\FE.Wizzard.pdb
 C:\Users\ellis\source\repos\proyecto_progra_avanzada4\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\FE.Wizzard.genruntimeconfig.cache
 C:\Users\ellis\source\repos\proyecto_progra_avanzada4\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\FE.Wizzard.csproj.AssemblyReference.cache
+C:\Users\Yorleny\proyecto_progra_avanzada\proyecto_progra_avanzada\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\Razor\Views\TipoAusencias\Create.cshtml.g.cs
+C:\Users\Yorleny\proyecto_progra_avanzada\proyecto_progra_avanzada\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\Razor\Views\TipoAusencias\Delete.cshtml.g.cs
+C:\Users\Yorleny\proyecto_progra_avanzada\proyecto_progra_avanzada\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\Razor\Views\TipoAusencias\Details.cshtml.g.cs
+C:\Users\Yorleny\proyecto_progra_avanzada\proyecto_progra_avanzada\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\Razor\Views\TipoAusencias\Edit.cshtml.g.cs
+C:\Users\Yorleny\proyecto_progra_avanzada\proyecto_progra_avanzada\ControlAsistenciaFrontEnd\FE.Wizzard\obj\Debug\netcoreapp3.1\Razor\Views\TipoAusencias\Index.cshtml.g.cs
